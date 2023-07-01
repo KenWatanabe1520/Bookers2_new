@@ -1,0 +1,31 @@
+<%= flash[:notice] %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h1>
+        welcome to <i class="fas fa-book" ></i>
+        <strong>Bookers</strong>!!
+      </h1>
+      <p class="mt-1">
+        In <i class="fas fa-book" ></i><strong>Bookers</strong>,
+      </p>
+      <p class="mt-1">
+        you can share and exchange your opinions, inpressions,
+        and emotions
+      </p>
+      <p class="mt-1">
+        about various books!
+      </p>
+      <div class="mx-auto col-lg-10">
+        <%= link_to new_user_session_path do %>
+          <button type="button" class="btn btn-info  col-lg-10">Log in</button>
+        <% end %>
+      </div>
+      <div class="mx-auto col-lg-10 mt-2">
+        <%= link_to new_user_registration_path do %>
+          <button type="button" class="btn btn-success  col-lg-10">Sign up</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
