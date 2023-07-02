@@ -17,14 +17,10 @@
         about various books!
       </p>
       <div class="mx-auto col-lg-10">
-        <%= link_to new_user_session_path do %>
-          <button type="button" class="btn btn-info  col-lg-10">Log in</button>
-        <% end %>
+        <a type="button" class="btn btn-info  col-lg-10" href="/users/sign_in">Log in</a>
       </div>
       <div class="mx-auto col-lg-10 mt-2">
-        <%= link_to new_user_registration_path do %>
-          <button type="button" class="btn btn-success  col-lg-10">Sign up</button>
-        <% end %>
+        <a type="button" class="btn btn-success  col-lg-10" href="/users/sign_up">Sign up</a>
       </div>
     </div>
   </div>

@@ -18,9 +18,11 @@
       <table style="width:100%">
         <thead>
           <tr class="border-top border-2">
+            <th class="p-2 col-md-2"></th>
+            <th class="p-2 col-md-3">Title</th>
+            <th class="p-2 col-md-4">Opinion</th>
+            <th class="p-2 col-md-1"></th>
             <th class="p-2 col-md-3"></th>
-            <th class="p-2 col-md-4">Title</th>
-            <th class="p-2 col-md-5">Opinion</th>
           </tr>
         </thead>
         <% @books.each do |book| %>
@@ -37,6 +39,26 @@
               <% end %>
             </td>
             <td class="p-2"><%= book.body %></td>
+            <!--いいね-->
+            <td>
+              <% if book.favorited_by?(current_user) %>
+                <p>
+                  <%= link_to book_favorites_path(book), method: :delete do %>
+                    <i class="fas fa-heart"></i><%= book.favorites.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>
+                  <%= link_to book_favorites_path(book), method: :post do %>
+                    <i class="far fa-heart"></i><%= book.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+            </td>
+            <!--コメント数-->
+            <td>
+              <p>コメント数:<%= book.book_comments.count %></p>
+            </td>
           </tr>
         </tbody>
         <% end %>

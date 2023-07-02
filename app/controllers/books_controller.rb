@@ -38,6 +38,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @new_book = Book.new
     @user = @book.user
+    @book_comment = BookComment.new
   end
 
   def destroy
@@ -53,7 +54,7 @@ class BooksController < ApplicationController
   end
 
   def is_matching_login_user
-    user = User.find(params[:id])
+    user = Book.find(params[:id]).user
     unless user.id == current_user.id
       redirect_to books_path
     end
