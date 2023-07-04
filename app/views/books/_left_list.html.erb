@@ -8,16 +8,40 @@
           <td class="p-2 border-top border-2"><%= user.name %></td>
         </tr>
         <tr>
-          <td class="p-2 border-top">introduction</td>
+          <td class="p-2 border-top border-2">introduction</td>
           <td class="p-2 border-top border-2"><%= user.introduction %></td>
+        </tr>
+        <tr>
+          <td class="p-2 border-top border-2">follows</td>
+          <td class="p-2 border-top border-2">
+            <%= link_to user_followings_path(user.id) do %>
+              <%= user.followings.count %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="p-2 border-top border-2">follower</td>
+          <td class="p-2 border-top border-2">
+            <%= link_to user_followers_path(user.id) do %>
+              <%= user.followers.count %>
+            <% end %>
+          </td>
         </tr>
       </table>
 
-      <div class="btn btn-outline-secondary btn-block mt-3">
-        <%= link_to edit_user_path(user.id) do %>
-            <i class="fas fa-user-cog text-secondary"></i>
+      <% if user == current_user %>
+        <div class="btn btn-outline-secondary btn-block mt-3">
+          <%= link_to edit_user_path(user.id) do %>
+              <i class="fas fa-user-cog text-secondary"></i>
+          <% end %>
+        </div>
+      <% else %>
+        <% if current_user.following?(user) %>
+          <%= link_to "フォローを外す", user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
         <% end %>
-      </div>
+      <% end %>
 
 
       </br>
